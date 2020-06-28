@@ -27,6 +27,9 @@ class BlogIndexPage(Page):
     image = models.ForeignKey(
         'wagtailimages.Image', null=True, blank=True, on_delete=models.SET_NULL, related_name='+'
     )
+    content_panels = Page.content_panels + [
+        ImageChooserPanel('image')
+    ]
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
@@ -35,7 +38,6 @@ class BlogIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
-    panels = [ImageChooserPanel('image')]
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey(
