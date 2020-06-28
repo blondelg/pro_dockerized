@@ -35,7 +35,7 @@ class BlogIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
-    content_panels = Page.content_panels + [ImageChooserPanel('image')]
+    panels = [ImageChooserPanel('image')]
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey(
