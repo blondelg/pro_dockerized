@@ -24,6 +24,9 @@ class HomePage(Page):
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
+    image = models.ForeignKey(
+        'wagtailimages.Image', null=True, blank=True, on_delete=models.SET_NULL, related_name='+'
+    )
 
 
     def get_context(self, request):
