@@ -1,0 +1,83 @@
+{% extends "base_blog.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/index">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Site</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Page Header -->
+{% image page.icon max-1000x500 as tmp_photo %}
+<header class="masthead" style="background-image: url('{{ tmp_photo.url }}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>{{ page.title }}</h1>
+          <h2 class="subheading">{{ page.intro }}</h2>
+          <span class="meta">Posté le {{ page.date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <!-- CATEGORIES -->
+        {% with categories=page.categories.all %}
+            {% if categories %}
+                <h3>Posted in:</h3>
+                <ul>
+                    {% for category in categories %}
+                        <li style="display: inline">
+                            {% image category.icon fill-32x32 style="vertical-align: middle" %}
+                            {{ category.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- TAGS -->
+        {% if page.tags.all.count %}
+            <div class="tags">
+                <h3>Tags</h3>
+                {% for tag in page.tags.all %}
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {{ page.body|richtext }}
+
+        {% for item in page.gallery_images.all %}
+            <div style="float: left; margin: 10px">
+                {% image item.image fill-320x240 %}
+                <p>{{ item.caption }}</p>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</article>
+<hr>
+{% endblock %}

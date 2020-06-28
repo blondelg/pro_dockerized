@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar" id="resp_navbar">
+    <a href="javascript:void(0);" class="icon" onclick="openNav()">
+      <i class="fa fa-bars icon-bar"></i>
+    </a>
+    <!-- <a class="nav_elt" onclick="respNavbar()" href="/blog/index">BLOG</a> -->
+    <a class="nav_elt" onclick="respNavbar()" href="#contact">CONTACT</a>
+    <a class="nav_elt" onclick="respNavbar()" href="#references">REFERENCES</a>
+    <a class="nav_elt" onclick="respNavbar()" href="#studies">ETUDES</a>
+    <a class="nav_elt" onclick="respNavbar()" href="#skills">COMPETENCES</a>
+    <a class="nav_elt" onclick="respNavbar()" href="#projects">PROJETS</a>
+    <a class="nav_elt" onclick="respNavbar()" href="#expe">EXPERIENCES</a>
+    <a class="nav_elt" onclick="respNavbar()" href="#about">APROPOS</a>
+    <a class="nav_elt nav_elt_left" href="#top" id="exit_menu">GB</a>
+  </div>
+
+  <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a onclick="closeNav()" href="#about">APROPOS</a>
+    <a onclick="closeNav()" href="#expe">EXPERIENCES</a>
+    <a onclick="closeNav()" href="#projects">PROJETS</a>
+    <a onclick="closeNav()" href="#skills">COMPETENCES</a>
+    <a onclick="closeNav()" href="#studies">ETUDES</a>
+    <a onclick="closeNav()" href="#references">REFERENCES</a>
+    <a onclick="closeNav()" href="#contact">CONTACT</a>
+    <!-- <a onclick="closeNav()" href="/blog/index">BLOG</a> -->
+  </div>
+</div>
+
+  <!-- First page -->
+  <div class="img_vitrine"  id="top">
+    <span class="titre_principal">Geoffroy Blondel</span>
+    <span class="sous_titre_principal">Développeur Freelance</span>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="container_view">
+    <h3 class="elt-center">A PROPOS</h3>
+    <img src="{% static 'photo_avatar.jpg' %}" alt="Avatar" class="about_avatar">
+    <div class="about_text">
+      <p>
+        La programmation est une discipline qui pourrait paraître sévère et indigeste. Pour moi, c'est une excellente manière d'exprimer sa créativité, de résoudre des problématiques concrètes et d'apporter des réponses.
+
+      </p>
+    </div>
+
+    <!-- Columns with domains of skills -->
+    <div class="about_row">
+    {% for elt in about %}
+      <div class="about_col">
+        <i class="{{ elt.0 }}"></i>
+        <h4>{{ elt.1 }}</h4>
+        <p>{{ elt.2 }}</p>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+
+  <!-- Experiences -->
+
+  <div id="expe" class="container_view">
+  <h3 class="elt-center">EXPERIENCES</h3>
+  <div class="space_exp"></div>
+  {% for elt in experience %}
+  <h4>{{ elt.0 }} -> {{ elt.1 }} : {{ elt.2 }}, <span>{{ elt.3 }}, {{ elt.4 }}</span></h4>
+  {% endfor %}
+  <div class="resume">
+    <a href="{% static 'cv/FR_Geoffroy_Blondel.pdf' %}" download>
+      <i class="fas fa-file-pdf fa-3x"></i>
+      <p>CV</p>
+    </a>
+  </div>
+  </div>
+
+  <!-- Projects -->
+  <div id="projects" class="container_view">
+    <h3 class="elt-center">PROJETS</h3>
+    {% for row in project %}
+    <div class="row_proj">
+    {% for elt in row %}
+     <div class="column_proj">
+       <div class="proj_title"><a href="{{ elt.2 }}"  target="_blank" ><i class="fab fa-github"></i></a><h4>{{ elt.0 }}</h4></div>
+       <p>{{ elt.1|safe }}</p>
+       <div class="project_skills"><i class="fas fa-tools"></i><p>{{ elt.3 }}</p></div>
+     </div>
+     {% endfor %}
+    </div>
+    {% endfor %}
+    <div class="resume">
+      <a href="https://github.com/blondelg"  target="_blank" >
+        <i class="fab fa-github fa-3x"></i>
+        <p>GITHUB</p>
+      </a>
+    </div>
+    <div class="space_exp"></div>
+  </div>
+
+  <!-- Skills -->
+  <div id="skills" class="container_view">
+    <h3 class="elt-center">COMPETENCES</h3>
+    <div class="skill_row">
+    <div class="brain_box">
+      <i class="fas fa-tools"></i>
+    </div>
+    <div class="skill_box">
+      {% for elt in skill %}
+      <p>{{ elt.0 }}</p>
+      <div class="skill_bar">
+        <div class="skills_bar_2" style="width: {{ elt.1 }}%;">{{ elt.1 }}%</div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+  </div>
+
+  <!-- Studies and formation  -->
+  <div id="studies" class="container_view">
+    <h3 class="elt-center">ETUDES</h3>
+    <div class="space_exp"></div>
+    {% for elt in study %}
+    <h4>{{ elt.0 }} : {{ elt.1 }}, <span>{{ elt.2 }}</span></h4>
+    {% endfor %}
+  </div>
+
+  <!-- References -->
+  <div id="references" class="container_view">
+    <h3 class="elt-center">REFERENCES</h3>
+    <div class="space_exp"></div>
+    <div class="ref_col">
+      {% for elt in ref %}
+      <p>&quot;{{ elt.0 }}&quot;</p>
+      <p class="ref_auth">{{ elt.1 }}</p>
+      {% endfor %}
+      <div class="resume">
+        <a href="https://www.linkedin.com/in/geoffroy-blondel-5416b893/"  target="_blank" >
+          <i class="fab fa-linkedin-in fa-3x"></i>
+          <p class="link_linkedin">Plus de détails</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="container_view">
+    <h3 class="elt-center">CONTACT</h3>
+    <p><i class="fa fa-map-marker fa-2x fa-fw" aria-hidden="true"></i>Address  :  14 rue de Bizerte, 75017, Paris</p>
+    <p><i class="fa fa-phone fa-2x fa-fw" aria-hidden="true"></i>Phone : +33 6 80 56 68 64</p>
+    <p><i class="fa fa-envelope fa-2x fa-fw" aria-hidden="true"></i>Email  :  geoffroy.blondel@gmail.com</p>
+    <p><i class="fab fa-linkedin-in fa-2x fa-fw"></i>Linkedin  :  <a href="https://www.linkedin.com/in/geoffroy-blondel-5416b893/" target="_blank" >www.linkedin.com</a></p>
+    <img src="{% static 'lars-greefhorst-xYB1xfCnpg0-unsplash.jpg' %}" class="contact_img">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+     <button class="btn_footer" type="button" onclick="window.location.href = '#top';">
+       <p><i class="fa fa-chevron-up pad-chev"></i>To the top</p>
+     </button>
+     <p><a href="https://github.com/blondelg/pro_app" target="_blank" ><i class="fab fa-github fa-3x gh_icon"></i></a></p>
+     <p>Powered by Geoffroy Blondel</p>
+     <p>Textures from <a href="freestocktextures.com" style="color:white">freestocktextures.com</a></p>
+     <p>Cyclist picture by Lars Greefhorst in <a href="unsplash.com" style="color:white">unsplash.com</a>
+  </footer>
+
+<script>
+  function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+  }
+
+  function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+  }
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+      this.lastElementChild.innerHTML = "<i class=\"fas fa-plus\"></i>";
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      this.lastElementChild.innerHTML = "<i class=\"fas fa-minus\"></i>";
+    }
+  });
+}
+
+
+</script>
+
+</body>
+{% endblock %}
