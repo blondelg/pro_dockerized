@@ -26,7 +26,7 @@ footer {
 
 /* Setting references view */
 #references {
-  background-image: url('photos_2015_12_21_fst_80914f864ed-0392-4187-b4f3-0bf0095e051e.jpg');
+  background-image: url('texture_reference.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -215,7 +215,7 @@ overflow:auto;
 /* Settup Experiences view */
 
 #expe {
-  background-image: url('photos_2017_11_10_fst_wall-texture-gray.jpg');
+  background-image: url('texture_experience.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -315,7 +315,7 @@ overflow:auto;
 
 .img_vitrine {
 
-  background-image: url('photos_2018_7_3_fst_painted-grey-wall.jpg');
+  background-image: url('texture_titre.jpg');
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-position: center;
