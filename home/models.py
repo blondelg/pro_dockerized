@@ -28,13 +28,14 @@ class BlogIndexPage(Page):
         'wagtailimages.Image', null=True, blank=True, on_delete=models.SET_NULL, related_name='+'
     )
 
-
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
         context['blogpages'] = blogpages
         return context
+
+    content_panels = Page.content_panels + [ImageChooserPanel('icon')]
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey(
