@@ -32,7 +32,7 @@ class BlogIndexPage(Page):
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
-        FieldPanel('image_credit', label="Crédit de l'image"),
+        FieldPanel('image_credit'),
     ]
 
     def get_context(self, request):
