@@ -27,8 +27,12 @@ class BlogIndexPage(Page):
     image = models.ForeignKey(
         'wagtailimages.Image', null=True, blank=True, on_delete=models.SET_NULL, related_name='+'
     )
+    image_credit = models.CharField(max_length=250, null=True, blank=True)
+
+
     content_panels = Page.content_panels + [
-        ImageChooserPanel('image')
+        ImageChooserPanel('image'),
+        FieldPanel('image_credit', label="Crédit de l'image"),
     ]
 
     def get_context(self, request):
