@@ -1,0 +1,7 @@
+config/settings/*
+config/settings/__pycache__/*
+config/__pycache__/*
+home/migrations/*
+home/__pycache__/*
+yourdatabasename.db
+home/static/startbootstrap-clean-blog-gh-pages/*
