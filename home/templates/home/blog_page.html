@@ -62,10 +62,11 @@
             <div class="tags">
                 <h3>Tags</h3>
                 {% for tag in page.tags.all %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button" class="btn btn-outline-secondary btn-sm">{{ tag }}</button></a>
                 {% endfor %}
             </div>
         {% endif %}
+        <hr>
 
         {{ page.body|markdown|safe }}
 
