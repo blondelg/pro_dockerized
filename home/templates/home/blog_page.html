@@ -10,7 +10,7 @@
   <div class="container">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/blog/index">Accueil</a>
+        <a class="nav-link" href="/blog">Accueil</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/">Site</a>
@@ -45,7 +45,7 @@
         <!-- CATEGORIES -->
         {% with categories=page.categories.all %}
             {% if categories %}
-                <h3>Posted in:</h3>
+                <h3>Catégorie :</h3>
                 <ul>
                     {% for category in categories %}
                         <li style="display: inline">
