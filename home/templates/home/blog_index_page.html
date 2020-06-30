@@ -39,12 +39,12 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <h1>{{ page.title }}</h1>
+          <h2>{{ page.title }}</h2>
           {% for post in blogpages %}
           {% with post=post.specific %}
           <div class="post-preview">
             <a href="{% pageurl post %}">
-              <h2 class="post-title">{{ post.title }}</h2>
+              <h3 class="post-title">{{ post.title }}</h3>
               <!-- TAGS -->
               {% if post.tags.all.count %}
                   <div class="tags">
@@ -53,7 +53,7 @@
                       {% endfor %}
                   </div>
               {% endif %}
-              <h4 class="post-subtitle">{{ post.intro }}</h4>
+              <h5 class="post-subtitle">{{ post.intro }}</h5>
             </a>
             <p class="post-meta">Posté le {{ post.date }}</p>
           </div>
