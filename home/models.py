@@ -13,6 +13,8 @@ from wagtail.search import index
 
 from wagtail.snippets.models import register_snippet
 
+from wagtailmd.utils import MarkdownField, MarkdownPanel
+
 
 class HomePage(Page):
     body = RichTextField(blank=True)
@@ -54,7 +56,7 @@ class BlogPageTag(TaggedItemBase):
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    body = RichTextField(blank=True)
+    body = MarkdownField()
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     categories = ParentalManyToManyField('home.BlogPageCategory', blank=True)
     icon = models.ForeignKey(
@@ -82,7 +84,7 @@ class BlogPage(Page):
             ImageChooserPanel('icon'),
         ], heading="Article information"),
         FieldPanel('intro'),
-        FieldPanel('body'),
+        MarkdownPanel('body'),
         InlinePanel('gallery_images', label="Gallery images"),
     ]
 
