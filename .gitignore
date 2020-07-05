@@ -5,4 +5,5 @@ home/migrations/*
 home/__pycache__/*
 yourdatabasename.db
 static/*
+media/*
 home/static/startbootstrap-clean-blog-gh-pages/*

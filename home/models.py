@@ -110,6 +110,7 @@ class BlogPageGalleryImage(Orderable):
 
 class BlogTagIndexPage(Page):
 
+
     def get_context(self, request):
 
         # Filter by tag
