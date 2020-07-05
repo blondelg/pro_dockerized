@@ -2,3 +2,7 @@
 	padding: 1% 1%;
 	font-size: 45%;
 }
+
+pre code {
+	color: white;
+}
