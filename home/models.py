@@ -46,6 +46,10 @@ class BlogIndexPage(Page):
         context['blogpages'] = blogpages
         return context
 
+    def get_tag(self):
+        # Get weighted tag list
+        pass
+
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey(

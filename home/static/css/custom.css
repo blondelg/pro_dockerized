@@ -6,3 +6,8 @@
 pre code {
 	color: white;
 }
+
+p img {
+	max-width: 100%;
+	height:auto;
+}

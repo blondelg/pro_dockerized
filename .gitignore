@@ -7,3 +7,5 @@ yourdatabasename.db
 static/*
 media/*
 home/static/startbootstrap-clean-blog-gh-pages/*
+.ipynb_checkpoints/*
+*.ipynb
