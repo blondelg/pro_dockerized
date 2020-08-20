@@ -42,10 +42,11 @@ class BlogIndexPage(Page):
         context = super().get_context(request)
         blogpages = self.get_children().live().exclude(title='Tag').order_by('-first_published_at')
         tags = Tag.objects.all()
+        tagged_pages = BlogPageTag.objects.all()
         
         tag_dict = {}
         for tag in tags:
-            tag_dict[tag] = tags.filter(name=tag).count()
+            tag_dict[tag] = tagged_pages.filter(tag_id=tag.id).count()
 
 
         context['blogpages'] = blogpages
