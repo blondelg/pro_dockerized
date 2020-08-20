@@ -44,6 +44,13 @@
     <div class="row">
     <div class="col-sm-2">
         <h3>TAGS</h3>
+        <ul style="list-style: none; padding-left:0;">
+        {% for key, value in tags.items %}
+        <a href="/blog/tags/?tag={{ key }}">
+            <li>{{ key }} ({{ value }})</li>
+        </a>
+        {% endfor %}
+        </utl>
     </div>
     <div class="col-sm-10">
     {% for post in blogpages %}
