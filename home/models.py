@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -40,7 +41,20 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        blogpages = self.get_children().live().exclude(title='Tag').order_by('-first_published_at')
+        all_blogpages = self.get_children().live().exclude(title='Tag').order_by('-first_published_at')
+
+        paginator = Paginator(all_blogpages, 10)        
+        
+        page = request.GET.get('page')
+        try:
+            blogpages = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            blogpages = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            blogpages = paginator.page(paginator.num_pages)
+        
         tags = Tag.objects.all()
         tagged_pages = BlogPageTag.objects.all()
         
@@ -128,7 +142,20 @@ class BlogTagIndexPage(Page):
 
         # Filter by tag
         tag = request.GET.get('tag')
-        blogpages = BlogPage.objects.filter(tags__name=tag)
+        all_blogpages = BlogPage.objects.filter(tags__name=tag).order_by('-first_published_at')
+        
+        # Pagination
+        paginator = Paginator(all_blogpages, 10)        
+        
+        page = request.GET.get('page')
+        try:
+            blogpages = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            blogpages = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            blogpages = paginator.page(paginator.num_pages)
 
         # Update template context
         context = super().get_context(request)
