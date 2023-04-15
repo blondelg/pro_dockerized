@@ -12,8 +12,8 @@ Original project: [https://github.com/blondelg/pro](https://github.com/blondelg/
 
 ### Features
 
-* Project in [https://www.djangoproject.com/](Django)
-* Blog based on [https://wagtail.org/](Wagtail) CMS
+* Project in [Django](https://www.djangoproject.com/)
+* Blog based on [Wagtail](https://wagtail.org/) CMS
 
 Available here: [https://pro-xwcykomr3a-od.a.run.app/](https://pro-xwcykomr3a-od.a.run.app/)
 
