@@ -36,7 +36,7 @@
   <!-- First page -->
   <div class="img_vitrine"  id="top">
     <span class="titre_principal">Geoffroy Blondel</span>
-    <span class="sous_titre_principal">Développeur Freelance</span>
+    <span class="sous_titre_principal">Développeur</span>
   </div>
 
   <!-- About -->
@@ -45,20 +45,35 @@
     <img src="{% static 'photo_avatar.jpg' %}" alt="Avatar" class="about_avatar">
     <div class="about_text">
       <p>
-        La programmation est une discipline qui pourrait paraître sévère et indigeste. Pour moi, c'est une excellente manière d'exprimer sa créativité, de résoudre des problématiques concrètes et d'apporter des réponses.
-
+Issue d'une formation d'inégiérie financière, j'ai orienté ma carrière vers le développement tout simplement parce que le sujet me passionne. Sans a priori, j'aime travailler sur des problématiques qui touchent le frontend, le backend, l'infrastructure ainsi que la donnée.
       </p>
     </div>
 
+
     <!-- Columns with domains of skills -->
     <div class="about_row">
-    {% for elt in about %}
       <div class="about_col">
-        <i class="{{ elt.0 }}"></i>
-        <h4>{{ elt.1 }}</h4>
-        <p>{{ elt.2 }}</p>
+        <i class="{{ about.0.0 }}"></i>
+        <h4>{{ about.0.1 }}</h4>
+        <p>{{ about.0.2|safe }}</p>
       </div>
-    {% endfor %}
+      <div class="about_col">
+        <i class="{{ about.1.0 }}"></i>
+        <h4>{{ about.1.1 }}</h4>
+        <p>{{ about.1.2|safe }}</p>
+      </div>
+    </div>
+    <div class="about_row">
+      <div class="about_col">
+        <i class="{{ about.2.0 }}"></i>
+        <h4>{{ about.2.1 }}</h4>
+        <p>{{ about.2.2|safe }}</p>
+      </div>
+      <div class="about_col">
+        <i class="{{ about.3.0 }}"></i>
+        <h4>{{ about.3.1 }}</h4>
+        <p>{{ about.3.2|safe }}</p>
+      </div>
     </div>
   </div>
 

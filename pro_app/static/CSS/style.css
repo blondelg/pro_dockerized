@@ -254,6 +254,7 @@ overflow:auto;
   margin-top: 5vh;
   width: 20vw;
   height: auto;
+  # transform: rotate(-90deg);
 }
 
 .about_text {
@@ -277,7 +278,7 @@ overflow:auto;
   box-sizing: border-box;
   padding: 2vw;
   float: left;
-  width: 33.33%;
+  width: 50%;
   text-align:center;
 }
 
